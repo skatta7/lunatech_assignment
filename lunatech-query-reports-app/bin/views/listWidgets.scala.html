@@ -1,0 +1,72 @@
+
+@(countries:List[Country], airports:List[Airport], runways:List[Runway], form: Form[WidgetForm.Data], postUrl: Call)(implicit request: MessagesRequestHeader)
+
+  @main("Widgets") { 
+  
+  	 <h1>Welcome to Lunatech</h1>   	  	
+  	 
+  	 @helper.form(postUrl) {
+      @helper.CSRF.formField
+	
+		 <table>
+		 <tr> 
+		 	 @* <td>
+		 		 @helper.inputRadioGroup(form("option"), 
+		 		 	options = Seq("Q"->"Queries","R"->"Reports"),
+		 		 	'_label -> "Choose Your Option", 'size -> 50)
+		 	</td> *@
+		 	<td>
+		 		 @helper.inputText(form("countryNameOrCode"), '_label -> "Country Name Or Code", 'size -> 50)
+		 	</td>
+		 </tr>
+		 </table>
+       <button>Query</button> 
+       <button formaction="@routes.WidgetController.getReport">Reports</button>     
+    }
+   </br>
+     
+	 <hr/>
+   
+    @* Flash shows updates to a page *@
+    @request.flash.data.map{ case (name, value) =>
+      <div>@name: @value</div>
+    }
+
+    <table border="1">
+      <tbody>
+      @for(country <- countries){
+      	 <tr>
+	       <td bgcolor="lightgreen" align="center">
+	       		@country.name
+	       	</td>        
+	        </tr>
+      	 @for(airport <- airports) {
+	        <tr>
+	        	<td bgcolor="lightblue">
+	        		@airport
+	        	</td>        
+	        </tr>
+	        @for(runway <- runways.filter(_.airport_ref==airport.id)){
+	        <tr>
+	        	<td bgcolor="lightpink">
+	        		@runway
+	        	</td>
+	         </tr>
+	         }
+      	}      
+      }
+     
+      </tbody>
+    </table>
+
+   
+ @* Global errors are not tied to any particular form field *@
+    @if(form.hasGlobalErrors) {
+      @form.globalErrors.map { error: FormError =>
+        <div>
+          @error.key: @error.message
+        </div>
+      }
+    }
+  
+  }

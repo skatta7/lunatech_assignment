@@ -1,0 +1,41 @@
+
+@(countriesWithlowAirports:List[String, List[Airport]], countriesWithHighAirports:List[String, List[Airport]])
+
+  @main("Reports") {   		  	
+  	<div>
+      <ul>
+        <li>Go Back to <a href="@routes.WidgetController.listWidgets">@routes.WidgetController.listWidgets</a></li>
+      </ul>
+    </div>
+    <table border="1">
+      <tbody>
+       <tr>
+	       <td bgcolor="lightgreen" align="center">
+	       		10 Countries With Highest No Of Airports
+	       	</td>        
+	   </tr>
+	   
+	  @countriesWithHighestNoOfAirports.foreach(f => {
+	  	<tr>
+	  		<td>@f._1</td>
+	  		<td>@f._2.length</td>
+	  	</tr>
+	  	}
+	  	)
+	  	 <tr>
+	       <td bgcolor="lightgreen" align="center">
+	       		10 Countries With Lowest No Of Airports
+	       	</td>        
+	   </tr>
+	    @countriesWithHighestNoOfAirports.foreach(f => {
+	  	<tr>
+	  		<td>@f._1</td>
+	  		<td>@f._2.length</td>
+	  	</tr>
+	  	}
+	  	)
+     
+      </tbody>
+    </table>
+    
+  }

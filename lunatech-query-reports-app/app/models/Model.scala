@@ -1,0 +1,5 @@
+package models
+
+case class Country(id:Int,code:String,name:String,continent:String,wikipedia_link:String,keywords:String)
+case class Airport(id:Int,ident:String,`type`:String,name:String,latitude_deg:String,longitude_deg:String,elevation_ft:String,continent:String,iso_country:String,iso_region:String,municipality:String,scheduled_service:String,gps_code:String,iata_code:String,local_code:String,home_link:String,wikipedia_link:String,keywords:String)
+case class Runway(id:Int,airport_ref:Int,airport_ident:String,length_ft:String,width_ft:String,surface:String,lighted:String,closed:String,le_ident:String,le_latitude_deg:String,le_longitude_deg:String,le_elevation_ft:String,le_heading_degT:String,le_displaced_threshold_ft:String,he_ident:String,he_latitude_deg:String,he_longitude_deg:String,he_elevation_ft:String,he_heading_degT:String,he_displaced_threshold_ft:String)

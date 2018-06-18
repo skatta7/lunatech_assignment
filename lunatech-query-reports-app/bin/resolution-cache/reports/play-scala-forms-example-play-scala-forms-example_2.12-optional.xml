@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="play-scala-forms-example"
+		module="play-scala-forms-example_2.12"
+		revision="2.6.x"
+		conf="optional"
+		confs="compile, runtime, test, provided, optional, universal, universal-docs, universal-src, windows, docker, linux, rpm, debian, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool, docs"
+		date="20180615084349"/>
+	<dependencies>
+	</dependencies>
+</ivy-report>

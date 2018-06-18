@@ -1,0 +1,60 @@
+
+@(countriesWithlowAirports:List[(String, List[Airport])], countriesWithHighAirports:List[(String, List[Airport])], runwaysForCountry:List[(String, Set[String])], commonRunwayIdents:List[String])
+ 						  
+
+  @main("Reports") {   		  	
+  	<div>
+      <ul>
+        <li>Go Back to <a href="@routes.HomeController.homePage">Home Page</a></li>
+      </ul>
+    </div>
+    <table border="1">
+      <tbody>
+       <tr>
+	       <td bgcolor="lightgreen" align="center" colspan=2>
+	       		10 Countries With Highest No Of Airports
+	       	</td>        
+	   </tr>
+	   
+	   @for(f <- countriesWithHighAirports){
+	   	<tr>
+	  		<td bgcolor="lightpink">@f._1</td>
+	  		<td bgcolor="lightpink">@f._2.length</td>
+	  	</tr>	   
+	   }
+	  <tr>
+	       <td bgcolor="lightgreen" align="center" colspan=2>
+	       		10 Countries With Lowest No Of Airports
+	       	</td>        
+	   </tr>
+	    @for(f <- countriesWithlowAirports){
+	   	<tr>
+	  		<td bgcolor="lightpink">@f._1</td>
+	  		<td bgcolor="lightpink">@f._2.length</td>
+	  	</tr>	   
+	   }
+	    <tr>
+	       <td bgcolor="lightgreen" align="center" colspan=2>
+	       		Type Of Runways Per Country
+	       	</td>        
+	   </tr>
+	    @for(f:(String, Set[String]) <- runwaysForCountry){
+	   	<tr>
+	  		<td bgcolor="lightpink">@f._1</td>
+	  		<td bgcolor="lightpink">@f._2.mkString(", ")</td>
+	  	</tr>	   
+	   }
+	    <tr>
+	       <td bgcolor="lightgreen" align="center" colspan=2>
+	       		Top 10 Most Common Runway Identifications
+	       	</td>        
+	   </tr>
+	    @for(f:String <- commonRunwayIdents){
+	   	<tr>
+	  		<td bgcolor="lightpink" colspan=2>@f</td>
+	  	</tr>	   
+	   }
+     
+      </tbody>
+    </table>    
+  }
